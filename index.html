@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goblet of Fire</title>
+
+    <style>
+        body {
+            background: url("https://wallpaper.dog/large/969765.jpg");
+        }
+      @font-face {
+        font-family: myFirstFont;
+        src: url(./HARRYP__.TTF);
+      }
+      .sid {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 50px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        color: white;
+      }
+
+      .sid > h1:first-child {
+        font-family: myFirstFont !important;
+        font-size: 3rem;
+        text-align: center;
+        width: 100%;
+      }
+
+      .sid > img {
+        width: 60%;
+        border: solid 5px;
+      }
+
+      .sid > button {
+        width: 40%;
+        height: 10%;
+        padding: 20px 0;
+        font-size: 20px;
+        background-color: white;
+        font-weight: bold;
+      }
+
+      .sid > h2 {
+        width: 40%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sid">
+      <h1>PEC ACM CSS Puzzling Wizard Tournament</h1>
+      <img id="img" src="./goblet-0.png" alt="goblet" />
+      <button onclick="getSID('cs')">Get a team from Computer Science</button>
+      <h2 id="cs_sid_val1">Who'll be the player from Computer Science?</h1>
+    </div>
+
+    <script>
+      function getSID(branch) {
+        var cs_start = 22103001;
+        var cs_end = 22103125;
+
+        document.getElementById("img").src = "./goblet.gif";
+
+        setTimeout(() => {
+          document.getElementById("img").src = "./goblet-0.png";
+          var sid = document.getElementById("sid_val");
+          if (branch === "cs") {
+            var val1 = Math.floor(
+              Math.random() * (cs_end - cs_start + 1) + cs_start
+            );
+
+            var val2 = Math.floor(
+              Math.random() * (cs_end - cs_start + 1) + cs_start
+            );
+
+            while(val2 == val1) 
+            {
+              val2 = Math.floor(
+              Math.random() * (cs_end - cs_start + 1) + cs_start
+              );
+            }
+
+            var val3 = Math.floor(
+              Math.random() * (cs_end - cs_start + 1) + cs_start
+            );
+
+            while(val3 == val1 || val3 == val2) 
+            {
+              val3 = Math.floor(
+              Math.random() * (cs_end - cs_start + 1) + cs_start
+              );
+            }
+
+            cs_sid_val1.innerHTML = " P1- " + val1.toString() + ", P2- " + val2.toString() + ", P3- " + val3.toString();
+          }
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
